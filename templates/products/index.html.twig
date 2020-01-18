@@ -3,6 +3,14 @@
 
 {% block body %}
     {% if products %}
+        <form class="pull-right hidden" role="search" id="nav-search-form" method="post" action="/products/search/">
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="Search" name ="search">
+          <span class="input-group-btn">
+            <button type="submit" class="btn btn-default"></button>
+          </span>
+        </div>
+      </form>
         <table id="products" class="table table-striped">
             <thead>
             <tr class="lead">

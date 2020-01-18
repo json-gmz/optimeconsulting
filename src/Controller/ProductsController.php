@@ -99,4 +99,26 @@ class ProductsController extends Controller
         $products = $this->getDoctrine()->getRepository(products::class)->findAll();
         return $this->render('products/index.html.twig', array('products' => $products));
     }
+
+    /**
+     * @Route("/products/search", name="products_search")
+     * @Method({"GET"})
+     * @return Response
+     */
+    public function search(Request $request){
+       $request = $this->getRequest();
+       $data = $request->request->get('search');
+
+
+       $em = $this->getDoctrine()->getManager();
+       $query = $em->createQuery(
+        'SELECT * FROM products p
+        WHERE p.name LIKE :data')
+       ->setParameter('data',$data);
+
+
+        $products = $query->getResult();
+
+        return $this->render('products/index.html.twig', array('products' => $products));
+    }
 }
