@@ -17,7 +17,7 @@
                     <td>
                         <a href="/products/{{ products.id }}" class="btn btn-primary">Ver</a>
                         <a href="/products/edit/{{ products.id }}" class="btn btn-secondary" data-id="{{ products.id }}">Editar</a>
-                        <a href="/products/delete/{{ products.id }}" class="btn btn-danger delete-products" data-id="{{ products.id }}">Borrar</a>
+                        <a href="/products/delete/{{ products.id }}" class="btn btn-danger delete-products" onclick="return confirm('Esta seguro que desea eliminar el producto {{ products.name }}?');" data-id="{{ products.id }}">Borrar</a>
                     </td>
                 </tr>
             {% endfor %}

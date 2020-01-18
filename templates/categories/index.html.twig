@@ -17,7 +17,7 @@
                     <td>
                         <a href="/categories/{{ categories.id }}" class="btn btn-primary">Ver</a>
                         <a href="/categories/edit/{{ categories.id }}" class="btn btn-secondary" data-id="{{ categories.id }}">Editar</a>
-                        <a href="/categories/delete/{{ categories.id }}" class="btn btn-danger delete-categories" data-id="{{ categories.id }}">Borrar</a>
+                        <a href="/categories/delete/{{ categories.id }}" class="btn btn-danger delete-categories" onclick="return confirm('Esta seguro que desea eliminar la categoria {{ categories.name }}?');" data-id="{{ categories.id }}">Borrar</a>
                     </td>
                 </tr>
             {% endfor %}
