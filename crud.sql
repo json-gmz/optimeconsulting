@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 100131
 File Encoding         : 65001
 
-Date: 2020-01-18 10:18:26
+Date: 2020-01-18 11:33:06
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -21,16 +21,12 @@ SET FOREIGN_KEY_CHECKS=0;
 DROP TABLE IF EXISTS `categories`;
 CREATE TABLE `categories` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `code` varchar(15) DEFAULT NULL,
-  `name` varchar(100) DEFAULT NULL,
-  `description` varchar(250) DEFAULT NULL,
-  `active` tinyint(1) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `code` varchar(15) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `description` varchar(250) NOT NULL,
+  `active` tinyint(1) NOT NULL,
+  PRIMARY KEY (`id`,`code`,`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- ----------------------------
--- Records of categories
--- ----------------------------
 
 -- ----------------------------
 -- Table structure for products
@@ -44,9 +40,5 @@ CREATE TABLE `products` (
   `mark` varchar(50) NOT NULL,
   `category` varchar(100) NOT NULL,
   `price` float(10,2) NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`,`code`,`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- ----------------------------
--- Records of products
--- ----------------------------
