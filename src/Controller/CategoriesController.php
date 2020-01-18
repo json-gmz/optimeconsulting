@@ -10,6 +10,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class CategoriesController extends Controller
@@ -37,6 +38,12 @@ class CategoriesController extends Controller
             ->add('name', TextType::class, array('attr' => array('class' => 'form-control', 'minlength' => 2)))
             ->add('description', TextareaType::class, array('attr' => array('class' => 'form-control')))
             ->add('active', TextType::class, array('attr' => array('class' => 'form-control')))
+            ->add('active', ChoiceType::class, [
+                    'choices'  => [
+                        'Yes' => 1,
+                        'No' => 0,
+                    ],
+                ])
             ->add('save', SubmitType::class, array('label' => 'Guardar', 'attr' => array('class' => 'btn btn-primary mt-3')))
             ->getForm();
         $form->handleRequest($request);
@@ -61,7 +68,12 @@ class CategoriesController extends Controller
             ->add('code', TextType::class, array('attr' => array('class' => 'form-control')))
             ->add('name', TextType::class, array('attr' => array('class' => 'form-control')))
             ->add('description', TextareaType::class, array('attr' => array('class' => 'form-control')))
-            ->add('active', TextType::class, array('attr' => array('class' => 'form-control')))
+            ->add('active', ChoiceType::class, [
+                    'choices'  => [
+                        'Yes' => 1,
+                        'No' => 0,
+                    ],
+                ])
             ->add('save', SubmitType::class, array('label' => 'Actualizar', 'attr' => array('class' => 'btn btn-primary mt-3')))
             ->getForm();
         $form->handleRequest($request);
