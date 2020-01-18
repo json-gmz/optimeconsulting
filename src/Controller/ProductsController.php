@@ -33,12 +33,12 @@ class ProductsController extends Controller
     {
         $products = new products();
         $form = $this->createFormBuilder($products)
-            ->add('code', TextType::class, array('attr' => array('class' => 'form-control')))
-            ->add('name', TextType::class, array('attr' => array('class' => 'form-control')))
+            ->add('code', TextType::class, array('attr' => array('class' => 'form-control', 'maxlength' => 10, 'minlength' => 4, 'onkeypress' => "return ((event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || event.charCode == 8 || (event.charCode >= 48 && event.charCode <= 57));")))
+            ->add('name', TextType::class, array('attr' => array('class' => 'form-control', 'minlength' => 4)))
             ->add('description', TextareaType::class, array('attr' => array('class' => 'form-control')))
             ->add('mark', TextType::class, array('attr' => array('class' => 'form-control')))
             ->add('category', TextType::class, array('attr' => array('class' => 'form-control')))
-            ->add('price', TextType::class, array('attr' => array('class' => 'form-control')))
+            ->add('price', TextType::class, array('attr' => array('class' => 'form-control', 'onkeypress' => "return (event.charCode > 47 && event.charCode < 59);")))
             ->add('save', SubmitType::class, array('label' => 'Guardar', 'attr' => array('class' => 'btn btn-primary mt-3')))
             ->getForm();
         $form->handleRequest($request);

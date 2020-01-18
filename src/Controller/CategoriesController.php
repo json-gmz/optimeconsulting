@@ -33,8 +33,8 @@ class CategoriesController extends Controller
     {
         $categories = new categories();
         $form = $this->createFormBuilder($categories)
-            ->add('code', TextType::class, array('attr' => array('class' => 'form-control')))
-            ->add('name', TextType::class, array('attr' => array('class' => 'form-control')))
+            ->add('code', TextType::class, array('attr' => array('class' => 'form-control', 'onkeypress' => "return ((event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || event.charCode == 8 || (event.charCode >= 48 && event.charCode <= 57));")))
+            ->add('name', TextType::class, array('attr' => array('class' => 'form-control', 'minlength' => 2)))
             ->add('description', TextareaType::class, array('attr' => array('class' => 'form-control')))
             ->add('active', TextType::class, array('attr' => array('class' => 'form-control')))
             ->add('save', SubmitType::class, array('label' => 'Guardar', 'attr' => array('class' => 'btn btn-primary mt-3')))
