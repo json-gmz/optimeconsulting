@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{ categories.name }}{% endblock %}
+
+{% block body %}
+    <h1>{{ categories.name }}</h1>
+    <p>Codigo: {{ categories.code }}</p>
+    <p>Descripción: {{ categories.description }}</p>
+    <p>Activo: {{ categories.active }}</p>
+    <hr>
+    <a href="/categories/list" class="">Regresar</a>
+{% endblock %}
